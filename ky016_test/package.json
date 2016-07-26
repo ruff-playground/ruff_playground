@@ -1,0 +1,12 @@
+{
+    "name": "ky016_test",
+    "version": "0.1.0",
+    "description": "test ky016 module",
+    "author": "ylli@thoughtworks.com",
+    "main": "src/index.js",
+    "ruff": {
+        "dependencies": {
+            "ky-016": "^2.0.1"
+        }
+    }
+}
