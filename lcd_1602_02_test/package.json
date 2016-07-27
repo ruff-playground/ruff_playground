@@ -1,0 +1,13 @@
+{
+    "name": "lcd_1602_02_test",
+    "version": "0.1.0",
+    "description": "",
+    "author": "",
+    "main": "src/index.js",
+    "ruff": {
+        "dependencies": {
+            "lcd1602-pcf8574a-hd44780": "^0.2.2",
+            "button-gpio": "^2.0.2"
+        }
+    }
+}
