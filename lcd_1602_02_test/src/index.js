@@ -13,7 +13,7 @@ $.ready(function (error) {
     	cnt = cnt + 1;
     	$("#LCD1602-02").clear();
         console.log('Button pushed.');
-        $("#LCD1602-02").print("" + cnt);
+        $("#LCD1602-02").print("" + cnt+"\n Hello!");
         $('#led-r').turnOn();
     });
 });

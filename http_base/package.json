@@ -1,0 +1,13 @@
+{
+    "name": "http_base",
+    "version": "0.1.0",
+    "description": "",
+    "author": "",
+    "main": "src/index.js",
+    "ruff": {
+        "dependencies": {
+            "button-gpio": "^2.0.2",
+            "lcd1602-pcf8574a-hd44780": "^0.2.2"
+        }
+    }
+}

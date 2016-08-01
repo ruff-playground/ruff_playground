@@ -4,7 +4,7 @@
             "name": "ruff-niu2",
             "sn": "R0100340",
             "mac": "30:44:a1:00:02:a8",
-            "address": "192.168.1.5"
+            "address": "10.17.6.141"
         }
     ],
     "active": {
@@ -12,8 +12,8 @@
         "name": "ruff-niu2",
         "sn": "R0100340",
         "mac": "30:44:a1:00:02:a8",
-        "address": "192.168.1.5",
-        "port": 55549,
+        "address": "10.17.6.141",
+        "port": 60239,
         "type": "ruff-device",
         "version": 3
     },

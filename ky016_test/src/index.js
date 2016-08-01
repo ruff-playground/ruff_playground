@@ -29,7 +29,7 @@ $.ready(function (error) {
     	cnt = mod(cnt + 1, max_rgb * 2);
     	var rgb_show = abs(cnt - max_rgb);
     	$('#KY-016').setRGB([rgb_show,rgb_show,rgb_show]);
-    },10);
+    },5);
 
 });
 

@@ -1,0 +1,10 @@
+{
+    "name": "net_test",
+    "version": "0.1.0",
+    "description": "",
+    "author": "",
+    "main": "src/index.js",
+    "ruff": {
+        "dependencies": {}
+    }
+}
