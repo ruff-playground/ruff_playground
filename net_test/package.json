@@ -5,6 +5,8 @@
     "author": "",
     "main": "src/index.js",
     "ruff": {
-        "dependencies": {}
+        "dependencies": {
+            "button-gpio": "^2.0.2"
+        }
     }
 }

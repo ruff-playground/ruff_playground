@@ -10,13 +10,28 @@ $.ready(function (error) {
 		console.log("connect to server!");
 		client.write("Hello world!\r\n");
     });
+
     client.on('data', function(data) {
 		console.log(data.toString());
-		client.end();
 	});
+
 	client.on('end', function() {
 	  	console.log('disconnected from server');
 	});
+
+    // 在 `#button` 按下时点亮 `#led-r`.
+    $('#CK002').on('push', function() {
+        console.log('Button pushed.');
+        client.write("Hello world!\r\n");
+        $('#led-r').turnOn();
+    });
+
+    // 在 `#button` 释放时熄灭 `#led-r`.
+    $('#CK002').on('release', function() {
+        console.log('Button released.');
+        client.write("Goodbye world!\r\n");
+        $('#led-r').turnOff();
+    });
 
     $('#led-r').turnOn();
 });

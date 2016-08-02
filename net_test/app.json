@@ -1,3 +1,18 @@
 {
-    "devices": []
+    "devices": [
+        {
+            "id": "CK002",
+            "model": "CK002",
+            "driver": "button-gpio",
+            "inputs": {
+                "gpio": {
+                    "type": "gpio",
+                    "args": {
+                        "direction": "in",
+                        "edge": "both"
+                    }
+                }
+            }
+        }
+    ]
 }
