@@ -1,0 +1,33 @@
+{
+    "models": [],
+    "inputs": {
+        "left_front": {
+            "type": "gpio",
+            "args": {
+                "direction": "out",
+                "level": "low"
+            }
+        },
+        "left_back": {
+            "type": "gpio",
+            "args": {
+                "direction": "out",
+                "level": "low"
+            }
+        },
+        "right_front": {
+            "type": "gpio",
+            "args": {
+                "direction": "out",
+                "level": "low"
+            }
+        },
+        "right_back": {
+            "type": "gpio",
+            "args": {
+                "direction": "out",
+                "level": "low"
+            }
+        }
+    }
+}

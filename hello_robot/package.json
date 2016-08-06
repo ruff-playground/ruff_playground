@@ -1,0 +1,12 @@
+{
+    "name": "hello_robot",
+    "version": "0.1.0",
+    "description": "",
+    "author": "",
+    "main": "src/index.js",
+    "ruff": {
+        "dependencies": {
+            "driver_car_base001": "*"
+        }
+    }
+}

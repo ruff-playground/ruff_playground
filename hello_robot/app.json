@@ -1,0 +1,39 @@
+{
+    "devices": [
+        {
+            "id": "car_base",
+            "model": "car_base",
+            "driver": "driver_car_base001",
+            "inputs": {
+                "left_front": {
+                    "type": "gpio",
+                    "args": {
+                        "direction": "out",
+                        "level": "low"
+                    }
+                },
+                "left_back": {
+                    "type": "gpio",
+                    "args": {
+                        "direction": "out",
+                        "level": "low"
+                    }
+                },
+                "right_front": {
+                    "type": "gpio",
+                    "args": {
+                        "direction": "out",
+                        "level": "low"
+                    }
+                },
+                "right_back": {
+                    "type": "gpio",
+                    "args": {
+                        "direction": "out",
+                        "level": "low"
+                    }
+                }
+            }
+        }
+    ]
+}
