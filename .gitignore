@@ -1,3 +1,7 @@
 ruff_modules
 .rap
 session.json
+.idea
+*.iml
+target
+
