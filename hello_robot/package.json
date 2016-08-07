@@ -6,7 +6,8 @@
     "main": "src/index.js",
     "ruff": {
         "dependencies": {
-            "driver_car_base001": "*"
+            "driver_car_base001": "*",
+            "lcd1602-pcf8574a-hd44780": "^0.2.2"
         }
     }
 }

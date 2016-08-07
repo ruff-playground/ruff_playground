@@ -1,0 +1,545 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B485BD81D560B0400613282 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485BD71D560B0400613282 /* AppDelegate.swift */; };
+		1B485BDD1D560B0400613282 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B485BDB1D560B0400613282 /* Main.storyboard */; };
+		1B485BDF1D560B0400613282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B485BDE1D560B0400613282 /* Assets.xcassets */; };
+		1B485BE21D560B0400613282 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B485BE01D560B0400613282 /* LaunchScreen.storyboard */; };
+		1B485BED1D560B0400613282 /* RemoteCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485BEC1D560B0400613282 /* RemoteCarTests.swift */; };
+		1B485BF81D560B0400613282 /* RemoteCarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485BF71D560B0400613282 /* RemoteCarUITests.swift */; };
+		1B485C861D56297500613282 /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485C811D56297500613282 /* ysocket.swift */; };
+		1B485C871D56297500613282 /* ytcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B485C821D56297500613282 /* ytcpsocket.c */; };
+		1B485C881D56297500613282 /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485C831D56297500613282 /* ytcpsocket.swift */; };
+		1B485C891D56297500613282 /* yudpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B485C841D56297500613282 /* yudpsocket.c */; };
+		1B485C8A1D56297500613282 /* yudpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485C851D56297500613282 /* yudpsocket.swift */; };
+		1B485C8B1D562B4D00613282 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485BD91D560B0400613282 /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1B485BE91D560B0400613282 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B485BCC1D560B0400613282 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B485BD31D560B0400613282;
+			remoteInfo = RemoteCar;
+		};
+		1B485BF41D560B0400613282 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B485BCC1D560B0400613282 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1B485BD31D560B0400613282;
+			remoteInfo = RemoteCar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1B485BD41D560B0400613282 /* RemoteCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B485BD71D560B0400613282 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1B485BD91D560B0400613282 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1B485BDC1D560B0400613282 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B485BDE1D560B0400613282 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B485BE11D560B0400613282 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1B485BE31D560B0400613282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B485BE81D560B0400613282 /* RemoteCarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteCarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B485BEC1D560B0400613282 /* RemoteCarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCarTests.swift; sourceTree = "<group>"; };
+		1B485BEE1D560B0400613282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B485BF31D560B0400613282 /* RemoteCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemoteCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B485BF71D560B0400613282 /* RemoteCarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCarUITests.swift; sourceTree = "<group>"; };
+		1B485BF91D560B0400613282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B485C811D56297500613282 /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ysocket.swift; sourceTree = "<group>"; };
+		1B485C821D56297500613282 /* ytcpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ytcpsocket.c; sourceTree = "<group>"; };
+		1B485C831D56297500613282 /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ytcpsocket.swift; sourceTree = "<group>"; };
+		1B485C841D56297500613282 /* yudpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yudpsocket.c; sourceTree = "<group>"; };
+		1B485C851D56297500613282 /* yudpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = yudpsocket.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B485BD11D560B0400613282 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B485BE51D560B0400613282 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B485BF01D560B0400613282 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B485BCB1D560B0400613282 = {
+			isa = PBXGroup;
+			children = (
+				1B485BD61D560B0400613282 /* RemoteCar */,
+				1B485BEB1D560B0400613282 /* RemoteCarTests */,
+				1B485BF61D560B0400613282 /* RemoteCarUITests */,
+				1B485BD51D560B0400613282 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B485BD51D560B0400613282 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B485BD41D560B0400613282 /* RemoteCar.app */,
+				1B485BE81D560B0400613282 /* RemoteCarTests.xctest */,
+				1B485BF31D560B0400613282 /* RemoteCarUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B485BD61D560B0400613282 /* RemoteCar */ = {
+			isa = PBXGroup;
+			children = (
+				1B485C801D56297500613282 /* ysocket */,
+				1B485BD71D560B0400613282 /* AppDelegate.swift */,
+				1B485BD91D560B0400613282 /* ViewController.swift */,
+				1B485BDB1D560B0400613282 /* Main.storyboard */,
+				1B485BDE1D560B0400613282 /* Assets.xcassets */,
+				1B485BE01D560B0400613282 /* LaunchScreen.storyboard */,
+				1B485BE31D560B0400613282 /* Info.plist */,
+			);
+			path = RemoteCar;
+			sourceTree = "<group>";
+		};
+		1B485BEB1D560B0400613282 /* RemoteCarTests */ = {
+			isa = PBXGroup;
+			children = (
+				1B485BEC1D560B0400613282 /* RemoteCarTests.swift */,
+				1B485BEE1D560B0400613282 /* Info.plist */,
+			);
+			path = RemoteCarTests;
+			sourceTree = "<group>";
+		};
+		1B485BF61D560B0400613282 /* RemoteCarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1B485BF71D560B0400613282 /* RemoteCarUITests.swift */,
+				1B485BF91D560B0400613282 /* Info.plist */,
+			);
+			path = RemoteCarUITests;
+			sourceTree = "<group>";
+		};
+		1B485C801D56297500613282 /* ysocket */ = {
+			isa = PBXGroup;
+			children = (
+				1B485C811D56297500613282 /* ysocket.swift */,
+				1B485C821D56297500613282 /* ytcpsocket.c */,
+				1B485C831D56297500613282 /* ytcpsocket.swift */,
+				1B485C841D56297500613282 /* yudpsocket.c */,
+				1B485C851D56297500613282 /* yudpsocket.swift */,
+			);
+			path = ysocket;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B485BD31D560B0400613282 /* RemoteCar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B485BFC1D560B0400613282 /* Build configuration list for PBXNativeTarget "RemoteCar" */;
+			buildPhases = (
+				1B485BD01D560B0400613282 /* Sources */,
+				1B485BD11D560B0400613282 /* Frameworks */,
+				1B485BD21D560B0400613282 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RemoteCar;
+			productName = RemoteCar;
+			productReference = 1B485BD41D560B0400613282 /* RemoteCar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1B485BE71D560B0400613282 /* RemoteCarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B485BFF1D560B0400613282 /* Build configuration list for PBXNativeTarget "RemoteCarTests" */;
+			buildPhases = (
+				1B485BE41D560B0400613282 /* Sources */,
+				1B485BE51D560B0400613282 /* Frameworks */,
+				1B485BE61D560B0400613282 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1B485BEA1D560B0400613282 /* PBXTargetDependency */,
+			);
+			name = RemoteCarTests;
+			productName = RemoteCarTests;
+			productReference = 1B485BE81D560B0400613282 /* RemoteCarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1B485BF21D560B0400613282 /* RemoteCarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B485C021D560B0400613282 /* Build configuration list for PBXNativeTarget "RemoteCarUITests" */;
+			buildPhases = (
+				1B485BEF1D560B0400613282 /* Sources */,
+				1B485BF01D560B0400613282 /* Frameworks */,
+				1B485BF11D560B0400613282 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1B485BF51D560B0400613282 /* PBXTargetDependency */,
+			);
+			name = RemoteCarUITests;
+			productName = RemoteCarUITests;
+			productReference = 1B485BF31D560B0400613282 /* RemoteCarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B485BCC1D560B0400613282 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = YongliuLi;
+				TargetAttributes = {
+					1B485BD31D560B0400613282 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = YMU4SCCJWL;
+					};
+					1B485BE71D560B0400613282 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 1B485BD31D560B0400613282;
+					};
+					1B485BF21D560B0400613282 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 1B485BD31D560B0400613282;
+					};
+				};
+			};
+			buildConfigurationList = 1B485BCF1D560B0400613282 /* Build configuration list for PBXProject "RemoteCar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B485BCB1D560B0400613282;
+			productRefGroup = 1B485BD51D560B0400613282 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B485BD31D560B0400613282 /* RemoteCar */,
+				1B485BE71D560B0400613282 /* RemoteCarTests */,
+				1B485BF21D560B0400613282 /* RemoteCarUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B485BD21D560B0400613282 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B485BE21D560B0400613282 /* LaunchScreen.storyboard in Resources */,
+				1B485BDF1D560B0400613282 /* Assets.xcassets in Resources */,
+				1B485BDD1D560B0400613282 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B485BE61D560B0400613282 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B485BF11D560B0400613282 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B485BD01D560B0400613282 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B485C8B1D562B4D00613282 /* ViewController.swift in Sources */,
+				1B485C8A1D56297500613282 /* yudpsocket.swift in Sources */,
+				1B485C881D56297500613282 /* ytcpsocket.swift in Sources */,
+				1B485C891D56297500613282 /* yudpsocket.c in Sources */,
+				1B485C861D56297500613282 /* ysocket.swift in Sources */,
+				1B485C871D56297500613282 /* ytcpsocket.c in Sources */,
+				1B485BD81D560B0400613282 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B485BE41D560B0400613282 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B485BED1D560B0400613282 /* RemoteCarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1B485BEF1D560B0400613282 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B485BF81D560B0400613282 /* RemoteCarUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1B485BEA1D560B0400613282 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B485BD31D560B0400613282 /* RemoteCar */;
+			targetProxy = 1B485BE91D560B0400613282 /* PBXContainerItemProxy */;
+		};
+		1B485BF51D560B0400613282 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1B485BD31D560B0400613282 /* RemoteCar */;
+			targetProxy = 1B485BF41D560B0400613282 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1B485BDB1D560B0400613282 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B485BDC1D560B0400613282 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1B485BE01D560B0400613282 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B485BE11D560B0400613282 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B485BFA1D560B0400613282 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1B485BFB1D560B0400613282 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B485BFD1D560B0400613282 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = RemoteCar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.laoniu.RemoteCar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		1B485BFE1D560B0400613282 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = RemoteCar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.laoniu.RemoteCar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		1B485C001D560B0400613282 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RemoteCarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.laoniu.RemoteCarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RemoteCar.app/RemoteCar";
+			};
+			name = Debug;
+		};
+		1B485C011D560B0400613282 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = RemoteCarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.laoniu.RemoteCarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RemoteCar.app/RemoteCar";
+			};
+			name = Release;
+		};
+		1B485C031D560B0400613282 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RemoteCarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.laoniu.RemoteCarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RemoteCar;
+			};
+			name = Debug;
+		};
+		1B485C041D560B0400613282 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = RemoteCarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.laoniu.RemoteCarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = RemoteCar;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B485BCF1D560B0400613282 /* Build configuration list for PBXProject "RemoteCar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B485BFA1D560B0400613282 /* Debug */,
+				1B485BFB1D560B0400613282 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B485BFC1D560B0400613282 /* Build configuration list for PBXNativeTarget "RemoteCar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B485BFD1D560B0400613282 /* Debug */,
+				1B485BFE1D560B0400613282 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B485BFF1D560B0400613282 /* Build configuration list for PBXNativeTarget "RemoteCarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B485C001D560B0400613282 /* Debug */,
+				1B485C011D560B0400613282 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B485C021D560B0400613282 /* Build configuration list for PBXNativeTarget "RemoteCarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B485C031D560B0400613282 /* Debug */,
+				1B485C041D560B0400613282 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B485BCC1D560B0400613282 /* Project object */;
+}

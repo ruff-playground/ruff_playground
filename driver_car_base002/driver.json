@@ -1,0 +1,29 @@
+{
+    "models": [],
+    "inputs": {
+        "left_front": {
+            "type": "pwm",
+            "args": {
+                "frequency": 800
+            }
+        },
+        "left_back": {
+            "type": "pwm",
+            "args": {
+                "frequency": 800
+            }
+        },
+        "right_front": {
+            "type": "pwm",
+            "args": {
+                "frequency": 800
+            }
+        },
+        "right_back": {
+            "type": "pwm",
+            "args": {
+                "frequency": 800
+            }
+        }
+    }
+}
