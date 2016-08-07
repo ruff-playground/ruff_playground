@@ -18,6 +18,28 @@ module.exports = {
 
             done();
         });
+    },
+    'test set baseRate': function (done) {
+        driverRunner.run(driverPath, function(error, context) {
+            var inputs = context.inputs;
+            var device = context.device;
+
+            // ...
+            device.setBaseRate(0.5)
+
+            done();
+        });
+    },
+    'test moveFront': function (done) {
+        driverRunner.run(driverPath, function(error, context) {
+            var inputs = context.inputs;
+            var device = context.device;
+
+            // ...
+            device.moveFront()
+
+            done();
+        });
     }
 };
 

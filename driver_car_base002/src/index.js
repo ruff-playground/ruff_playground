@@ -17,6 +17,11 @@ module.exports = driver({
         this._left_back  = inputs['left_back'];
         this._right_front  = inputs['right_front'];
         this._right_back  = inputs['right_back'];
+        this._baseRate = 1;
+        this._d_lf = 0;
+        this._d_lb = 0;
+        this._d_rf = 0;
+        this._d_rb = 0; 
         var checkDuty = function(d){
             if(d < 0){
                 return 0;
@@ -26,63 +31,79 @@ module.exports = driver({
             }
             return d;
         }
-        this._setDuties=function(lf, lb, rf, rb, callback){
-
-            this._left_front.setDuty(checkDuty(lf), callback);
-            this._left_back.setDuty(checkDuty(lb), callback);
-            this._right_front.setDuty(checkDuty(rf), callback);
-            this._right_back.setDuty(checkDuty(rb), callback);
+        this._setDutiesAndCache = function(lf, lb, rf, rb, callback){
+            this._d_lf = lf;
+            this._d_lb = lb;
+            this._d_rf = rf;
+            this._d_rb = rb;
+            this._setDuties(lf, lb, rf, rb);
+        }
+        this._setDuties = function(lf, lb, rf, rb, callback){
+            this._left_front.setDuty(checkDuty(lf) * this._baseRate, callback);
+            this._left_back.setDuty(checkDuty(lb) * this._baseRate, callback);
+            this._right_front.setDuty(checkDuty(rf) * this._baseRate, callback);
+            this._right_back.setDuty(checkDuty(rb) * this._baseRate, callback);
         }
 
     },
     exports: {
         stop: function (callback) {
-            this._setDuties(0, 0, 0, 0, callback);
+            this._setDutiesAndCache(0, 0, 0, 0, callback);
+        },
+        setBaseRate: function(baseRate){
+            this._baseRate = baseRate;
+            this._setDuties(this._d_lf, this._d_lb, this._d_rf, this._d_rb);
         },
         setSpeed:function(x, y, callback){
             var lf = 0,lb = 0,rf = 0,rb = 0;
             if(y >= 0){
-                lf=y;
-                rf=y;
-                if(x>0){
-                    rf= rf - x;
+                lf = y;
+                rf = y;
+                if(x > 0){
+                    rf = rf - x;
+                    lf = lf + x;
                 }else{
-                    lf= lf + x;
+                    lf = lf + x;
+                    rf = rf - x;
                 }
-            }else{
-                lb=-y;
-                rb=-y;
-                if(x>0){
-                    rb= rf - x;
+            } else {
+                lb = 0 - y;
+                rb = 0 - y;
+                if(x > 0){
+                    rb = rb - x;
+                    lb = lb + x;
                 }else{
-                    lb= lf + x;
+                    lb = lb + x;
+                    rb = rb - x;
                 }
             }
+            //console.log("lf:"+lf+"lb:"+lb+"rf:"+rf+"rb:"+rb)
+            this._setDutiesAndCache(lf, lb, rf, rb);
 
         },
         moveFront: function (callback) {
-            this._setDuties(1, 0, 1, 0, callback);
+            this.setSpeed(0, 1, callback);
         },
         moveBack:function (callback) {
-            this._setDuties(0, 1, 0, 1, callback);
+            this.setSpeed(0, -1, callback);
         },
         turnLeft:function (callback) {
-            this._setDuties(0, 1, 1, 0, callback);
+            this.setSpeed(1, 0, callback);
         },
         turnRight:function (callback) {
-            this._setDuties(1, 0, 0, 1, callback);
+            this.setSpeed(-1, 0, callback);
         },
         turnLeftA:function (callback) {
-            this._setDuties(0, 1, 0, 0, callback);
+            this._setDutiesAndCache(0, 1, 0, 0, callback);
         },
         turnLeftB:function (callback) {
-            this._setDuties(0, 0, 1, 0, callback);
+            this._setDutiesAndCache(0, 0, 1, 0, callback);
         },
         turnRightA:function (callback) {
-            this._setDuties(0, 0, 0, 1, callback);
+            this._setDutiesAndCache(0, 0, 0, 1, callback);
         },
         turnRightB:function (callback) {
-            this._setDuties(1, 0, 0, 0, callback);
+            this._setDutiesAndCache(1, 0, 0, 0, callback);
         },
     }
 });
