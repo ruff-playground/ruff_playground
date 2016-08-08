@@ -5,7 +5,52 @@ $.ready(function (error) {
 	var lcd = $("#LCD1602-02");
 	var car = $("#car_base");
 	var button = $("#CK002");
-	var port = 8899;
+	var port = 9999;
+	var msgs_queue = []
+
+	//
+	var cmdCount = 0;
+    var noCmdPassedTime = 0;
+    var stopDelay = 1000;
+    var autoStopTimerInterval = 100;
+
+    var msgProcessorTimerInterval = 50;
+    //
+    var msgProcessor = function() {
+    	if(msgs_queue.length === 0) {
+    		return;
+    	}
+    	var msgStr = msgs_queue.pop();
+		if(msgStr.length <= 0){
+			return;
+		}
+		console.log(msgStr)
+    	var msg = {};
+    	try{
+    		msg = JSON.parse(msgStr);
+    	}catch(e){
+    		console.log('message is not a valid JSON');
+    		return;
+    	}
+    	switch(msg.type){
+    		case "KEY_EVENT":
+    			noCmdInterval = 0;
+    			onKeyEvent(msg);
+    		break;
+    		case "SPEED_CHANGE":
+    			noCmdInterval = 0;
+    			onSpeepChangeEvent(msg);
+    		break;
+    		case "BASE_RATE_CHANGE":
+    			noCmdInterval = 0;
+    			onBaseRateChangeEvent(msg);
+    		break;
+    		default:
+    		break;
+    	}
+    }
+    setInterval(msgProcessor, msgProcessorTimerInterval)
+
 
 	var lastKey = 0;
     if (error) {
@@ -14,17 +59,18 @@ $.ready(function (error) {
     }
 
     console.log('board started');
-    var cmdCount = 0;
-    var noCmdInterval = 0;
-    var stopInterval = 1000;
-    var timerInteval = 100;
+
+
     var autoStop = function(){
-		noCmdInterval = noCmdInterval + timerInteval;
-		if(noCmdInterval > stopInterval){
+		noCmdPassedTime = noCmdPassedTime + autoStopTimerInterval;
+		if(noCmdPassedTime > stopDelay){
 			car.stop();
 		}	
     }
-    setInterval(autoStop, timerInteval)
+
+
+
+    setInterval(autoStop, autoStopTimerInterval)
 
     var lcdShow = function(line1, line2){
 
@@ -82,6 +128,8 @@ $.ready(function (error) {
 	var onBaseRateChangeEvent = function (msg) {
 		car.setBaseRate(msg.body.baseRate);
 	}
+
+
 	var connect = function(){
 		var client = net.connect({port:port,host:'10.17.6.27'},function(){
 			console.log('connect to server!');
@@ -90,35 +138,12 @@ $.ready(function (error) {
 
 	    client.on('data', function(data) {
 	    	var trimed = data.toString().trim().replace('\r\n','\n');
-	    	console.log(trimed);
 	    	var msgs = trimed.split('\n');
 	    	for(var i = 0 ; i < msgs.length; i++){
 	    		var msgStr = msgs[i];
-	    		if(msgStr.length<=0){
-	    			continue;
-	    		}
-		    	var msg = {};
-		    	try{
-		    		msg = JSON.parse(msgStr);
-		    	}catch(e){
-		    		console.log('message is not a valid JSON');
-		    	}
-		    	switch(msg.type){
-		    		case "KEY_EVENT":
-		    			noCmdInterval = 0;
-		    			onKeyEvent(msg);
-		    		break;
-		    		case "SPEED_CHANGE":
-		    			noCmdInterval = 0;
-		    			onSpeepChangeEvent(msg);
-		    		break;
-		    		case "BASE_RATE_CHANGE":
-		    			noCmdInterval = 0;
-		    			onBaseRateChangeEvent(msg);
-		    		break;
-		    		default:
-		    		break;
-		    	}
+	    		msgs_queue.unshift(msgStr)
+
+		    	
 	    	}
 	    	
 
