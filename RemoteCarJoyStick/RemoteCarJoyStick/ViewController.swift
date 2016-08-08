@@ -12,7 +12,7 @@ class ViewController: UIViewController {
    
 
     
-    var serverPort  = 9949
+    var serverPort  = 9099
     var serverAddr = "192.168.1.3"
     
     
@@ -153,6 +153,8 @@ class ViewController: UIViewController {
                 })
             }
         })
+        
+    
         
     }
     

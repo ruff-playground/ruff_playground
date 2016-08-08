@@ -26,7 +26,7 @@ public class KeyEventDemo extends JFrame
 
     public static void main(String[] args) {
 
-        minaTimeServer = new MinaTimeServer(9949);
+        minaTimeServer = new MinaTimeServer(9999);
         new Thread(new Runnable() {
             public void run() {
                 try {

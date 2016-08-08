@@ -38,12 +38,25 @@ public class MinaTimeServer {
     }
 
     public void run() throws IOException {
+        final MinaTimeServer t=this;
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                try {
+                    t.finalize();
+                }
+                catch (IOException ex) {
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+
+            }
+        });
 
         sendQueueThread = new Thread(new Runnable() {
             public void run() {
                 while (true) {
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(20);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -57,8 +70,6 @@ public class MinaTimeServer {
                     for (IoSession session : sessionSet) {
                         session.write(sendString);
                     }
-
-
                 }
             }
         });

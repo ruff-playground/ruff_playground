@@ -62,7 +62,7 @@ $.ready(function (error) {
 
 
     var autoStop = function(){
-		noCmdPassedTime = noCmdPassedTime + autoStopTimerInterval;
+		noCmdPassedTime = noCmdPassedTime + autoStopTimerInterval	;
 		if(noCmdPassedTime > stopDelay){
 			car.stop();
 		}	
