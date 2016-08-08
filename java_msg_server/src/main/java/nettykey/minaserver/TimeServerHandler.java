@@ -1,8 +1,13 @@
 package nettykey.minaserver;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import nettykey.domain.Message;
+import nettykey.util.JSONUtil;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
+
+import static nettykey.domain.Message.*;
 
 /**
  * 服务器端业务逻辑
@@ -38,14 +43,29 @@ public class TimeServerHandler extends IoHandlerAdapter {
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
         String strMsg = message.toString();
-        if (strMsg.trim().equalsIgnoreCase("quit")) {
-            session.close(true);
-            return;
-        }
         // 返回消息字符串
-        session.write("Hi Client!");
+        session.write("{\"msg\":\"Hi Client!\"}\n");
         // 打印客户端传来的消息内容
         System.out.println("Message written : " + strMsg);
+        //
+        JsonNode node = JSONUtil.readTree(strMsg);
+        if (node == null || node.get("type") == null) {
+            System.out.println("Message written : " + strMsg);
+            return;
+        }
+        System.out.println("Message type : " + node.get("type").textValue());
+        String type = node.get("type").textValue();
+        JsonNode bodyNode = node.get("body");
+        if (KEY_EVENT.equals(type)) {
+            sessionHandler.sendMsg(JSONUtil.toJson(Message.simpleKeyEventMessage(bodyNode.get("keyCode").asInt(), bodyNode.get("eventCode").asInt())));
+        }
+        if (SPEED_CHANGE.equals(type)) {
+            sessionHandler.sendMsg(JSONUtil.toJson(Message.speedChangeEventMessage(bodyNode.get("x").asDouble(0.0), bodyNode.get("y").asDouble(0.0))));
+        }
+        if (BASE_RATE_CHANGE.equals(type)) {
+            sessionHandler.sendMsg(JSONUtil.toJson(Message.baseRateChangeEventMessage(bodyNode.get("baseRate").asDouble(0.0))));
+        }
+
     }
 
     @Override

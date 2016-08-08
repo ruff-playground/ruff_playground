@@ -17,12 +17,19 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 import java.util.LinkedHashSet;
+import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+import static nettykey.domain.Message.KEY_EVENT;
 
 public class MinaTimeServer {
     // 定义监听端口
-    private int port = 5556;
+    private int port;
     Set<IoSession> sessionSet = new LinkedHashSet<IoSession>();
+    Thread sendQueueThread;
+    Queue<String> sendQueue = new ConcurrentLinkedQueue<String>();
+    IoAcceptor acceptor;
 
     public MinaTimeServer(int port) {
         // 创建服务端监控线程
@@ -32,9 +39,38 @@ public class MinaTimeServer {
 
     public void run() throws IOException {
 
+        sendQueueThread = new Thread(new Runnable() {
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    if (sessionSet == null) {
+                        continue;
+                    }
+                    if (sendQueue.isEmpty()) {
+                        continue;
+                    }
+                    String sendString = sendQueue.poll();
+                    for (IoSession session : sessionSet) {
+                        session.write(sendString);
+                    }
+
+
+                }
+            }
+        });
+        sendQueueThread.start();
+
         TimeServerHandler handler = new TimeServerHandler(new SessionHandler() {
             public void sessionOpened(IoSession ioSession) {
                 sessionSet.add(ioSession);
+            }
+
+            public void sendMsg(String msg) {
+                sendToRobot(msg);
             }
 
             public void sessionClosed(IoSession ioSession) {
@@ -42,7 +78,7 @@ public class MinaTimeServer {
             }
         });
 
-        IoAcceptor acceptor = new NioSocketAcceptor();
+        acceptor = new NioSocketAcceptor();
         acceptor.getSessionConfig().setReadBufferSize(2048);
         acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
         // 设置日志记录器
@@ -66,15 +102,22 @@ public class MinaTimeServer {
 
 
     public void sendToRobot(SimpleKeyEvent keyEvent) {
-        Message<KeyEvent> eventMessage=new Message<KeyEvent>();
-        sendToRobot(JSONUtil.toJson(eventMessage.setType("KEY_EVENT").setBody(keyEvent)));
+        Message<KeyEvent> eventMessage = new Message<KeyEvent>();
+        sendToRobot(JSONUtil.toJson(eventMessage.setType(KEY_EVENT).setBody(keyEvent)));
     }
 
     private void sendToRobot(String s) {
-        if (sessionSet != null) {
-            for (IoSession session : sessionSet) {
-                session.write(s);
-            }
-        }
+        sendQueue.add(s);
     }
+
+    protected void finalize() throws IOException {
+        for (IoSession session : sessionSet) {
+            session.close(true);
+        }
+        acceptor.unbind();
+        acceptor.bind(new InetSocketAddress(port));
+        acceptor.dispose();
+        System.out.println("close socket!");
+    }
+
 }

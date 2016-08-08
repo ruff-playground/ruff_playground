@@ -24,12 +24,60 @@
                                 <rect key="frame" x="279" y="279" width="42" height="42"/>
                                 <color key="tintColor" red="1" green="0.15712096785571916" blue="0.13666296586451232" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="RuffCar JoyStick" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4o-7I-7DN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Connecting..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOl-9T-7kR">
                                 <rect key="frame" x="219" y="28" width="129" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="217" y="28" width="103" height="21"/>
+                                </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Server" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k8K-gy-Uce">
+                                <rect key="frame" x="219" y="28" width="129" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="7" y="20" width="94" height="43"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Port" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbV-2h-Hz9">
+                                <rect key="frame" x="219" y="28" width="129" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="7" y="61" width="40" height="43"/>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ilr-qU-qOX">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="64" y="27" width="130" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k9f-Nf-gFY">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="64" y="68" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBj-89-gBB">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="🔁"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="169" y="68" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="clickReconnect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xnu-iV-hbV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <gestureRecognizers/>
@@ -37,17 +85,39 @@
                             <constraint firstItem="m3f-3S-k45" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3kC-lV-2qv"/>
                             <constraint firstItem="7X5-rG-Vus" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="9aD-tZ-uzH"/>
                             <constraint firstItem="m3f-3S-k45" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iMc-r9-hfi"/>
-                            <constraint firstItem="a4o-7I-7DN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iZY-fO-Kjd"/>
                             <constraint firstItem="7X5-rG-Vus" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xxV-Bf-thS"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="OOl-9T-7kR"/>
+                                <exclude reference="k8K-gy-Uce"/>
+                                <exclude reference="TbV-2h-Hz9"/>
+                                <exclude reference="Ilr-qU-qOX"/>
+                                <exclude reference="k9f-Nf-gFY"/>
+                                <exclude reference="xBj-89-gBB"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="OOl-9T-7kR"/>
+                                <include reference="k8K-gy-Uce"/>
+                                <include reference="TbV-2h-Hz9"/>
+                                <include reference="Ilr-qU-qOX"/>
+                                <include reference="k9f-Nf-gFY"/>
+                                <include reference="xBj-89-gBB"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="addrText" destination="Ilr-qU-qOX" id="rae-Ar-IpU"/>
                         <outlet property="circleButton" destination="7X5-rG-Vus" id="Fta-vy-1qn"/>
+                        <outlet property="portText" destination="k9f-Nf-gFY" id="bmB-wj-1uf"/>
+                        <outlet property="statusLabel" destination="OOl-9T-7kR" id="LHr-jT-2Tk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="374"/>
+            <point key="canvasLocation" x="304.5" y="374"/>
         </scene>
     </scenes>
     <resources>

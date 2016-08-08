@@ -8,4 +8,5 @@ import org.apache.mina.core.session.IoSession;
 public interface SessionHandler {
     void sessionOpened(IoSession ioSession);
     void sessionClosed(IoSession ioSession);
+    void sendMsg(String msg);
 }

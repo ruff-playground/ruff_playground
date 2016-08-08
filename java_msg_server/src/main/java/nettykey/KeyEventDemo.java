@@ -19,10 +19,14 @@ public class KeyEventDemo extends JFrame
     JTextField typingArea;
     static final String newline = System.getProperty("line.separator");
     static MinaTimeServer minaTimeServer;
+    long repeatInterval = 500;
+    long lastClick = 0;
+    int lastKeyCode = -1;
+
 
     public static void main(String[] args) {
 
-        minaTimeServer = new MinaTimeServer(5556);
+        minaTimeServer = new MinaTimeServer(9949);
         new Thread(new Runnable() {
             public void run() {
                 try {
@@ -53,7 +57,7 @@ public class KeyEventDemo extends JFrame
 
         //Schedule a job for event dispatch thread:
         //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 createAndShowGUI();
             }
@@ -126,6 +130,9 @@ public class KeyEventDemo extends JFrame
      */
     public void keyPressed(KeyEvent e) {
         displayInfo(e, "KEY PRESSED: ");
+        if (lastKeyCode == e.getKeyCode() && (System.currentTimeMillis() - lastClick) < repeatInterval) {
+            return;
+        }
         minaTimeServer.sendToRobot(EventConverter.toSimpleKeyEvent(e, SimpleKeyEvent.EVENT_PRESS));
     }
 
@@ -210,4 +217,9 @@ public class KeyEventDemo extends JFrame
                 + "    " + locationString + newline);
         displayArea.setCaretPosition(displayArea.getDocument().getLength());
     }
+
+        protected void finalize() throws Throwable {
+
+    }
+
 }

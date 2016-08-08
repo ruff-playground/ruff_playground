@@ -7,40 +7,80 @@
 //
 
 import UIKit
+
 class ViewController: UIViewController {
-    @IBOutlet var panGesture: UIPanGestureRecognizer!
-    var panCount = 0
-    var serverPort  = 8899
+   
+
+    
+    var serverPort  = 9949
+    var serverAddr = "192.168.1.3"
+    
+    
+
     var beginPosition = CGPoint(x:0,y:0)
     var currentPosition = CGPoint(x:0,y:0)
     var transform = CGPoint(x:0 ,y:0)
     var center = CGPoint(x:0 ,y:0)
     let MAX_TRANSFORM_LEN:CGFloat=100.0
-    var socketClient:TCPClient?
+  
     var lastSpeed = CGPoint(x:0,y:0)
     var lastSentTime:NSTimeInterval = 0
     // unit : second
     var msgSentInteval:NSTimeInterval = 0.5
-    var speedDownInterval = 0.2
+    var speedDownInterval = 0.05
     var timer =  NSTimer()
     var isTouched = false
-    var speedSteps:CGFloat = 5
-
+    var speedSteps:CGFloat = 10
+    
+    
+    var socketClient:TCPClient?
+    
+    @IBOutlet weak var addrText: UITextField!
+    @IBOutlet weak var portText: UITextField!
     @IBOutlet weak var circleButton: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    @IBAction func clickReconnect(sender: AnyObject) {
+        serverPort=Int((portText.text!))!
+        NSUserDefaults.standardUserDefaults().setInteger(serverPort, forKey: "serverPort")
+        serverAddr=addrText.text!
+        NSUserDefaults.standardUserDefaults().setValue(serverPort, forKey: "serverAddr")
+        connectToServer();
+        
+    }
+    func loadDefaultData(){
+        let userDefaults =  NSUserDefaults.standardUserDefaults()
+        print(userDefaults)
+        let _serverAddr:String? = NSUserDefaults.standardUserDefaults().stringForKey("serverAddr")
+        if (!(_serverAddr == nil)){
+            serverAddr = _serverAddr!;
+        }
+        let _serverPort:Int? = NSUserDefaults.standardUserDefaults().integerForKey("serverPort")
+        if (!(_serverAddr == nil)){
+            serverPort=_serverPort!;
+        }
+        addrText.text=serverAddr;
+        
+        portText.text="\(serverPort)";
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         print(self.view.bounds.width)
         print(self.view.bounds.height)
         center = CGPoint(x: self.view.frame.width/2 ,y:self.view.frame.height/2)
         circleButton.center = center;
+        loadDefaultData();
+        
         self.connectToServer();
-        timer = NSTimer.scheduledTimerWithTimeInterval(speedDownInterval, target: self, selector: (#selector(ViewController.updateTimer)), userInfo:nil,repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(speedDownInterval, target: self, selector: (#selector(ViewController.slowDownTimer)), userInfo:nil,repeats: true)
     }
     
-    var speedDownStep:CGFloat = 0.3;
+    
     func  speedDown(x:CGFloat) -> CGFloat{
+        let speedDownStep:CGFloat = 1.0 / self.speedSteps;
         var ret:CGFloat = 0.0
         if(x > speedDownStep){
             ret = x - speedDownStep;
@@ -51,42 +91,33 @@ class ViewController: UIViewController {
         }
         return ret
     }
-    func updateTimer(){
+    
+    func slowDownTimer(){
         var newSpeed=CGPoint(x:0, y:0);
         if(isTouched == false){
-            
             if(lastSpeed.x == 0 && lastSpeed.y == 0){
                 return;
             }
             newSpeed.x = self.speedDown(lastSpeed.x)
             newSpeed.y = self.speedDown(lastSpeed.y)
+            let newCenter = CGPoint(x:(center.x + MAX_TRANSFORM_LEN * newSpeed.x), y:(center.y - MAX_TRANSFORM_LEN * newSpeed.y))
+            self.circleButton.center = newCenter;
             self.sendSpeedChangeEvent(newSpeed.x, y: newSpeed.y)
-            print("no touches, speed downing!",newSpeed)
         }
     }
     
     func connectToServer(){
-        socketClient=TCPClient(addr: "10.17.6.27", port: serverPort)
+        socketClient?.close()
+        socketClient=TCPClient(addr: serverAddr, port: serverPort)
+        self.statusLabel.text="connecting!"
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
             () -> Void in
             
             //用于读取并解析服务端发来的消息
             func readmsg()->NSDictionary?{
-                return nil
-                //read 4 byte int as type
-                if let data=self.socketClient!.read(4){
-                    if data.count==4{
-                        let ndata=NSData(bytes: data, length: data.count)
-                        var len:Int32=0
-                        ndata.getBytes(&len, length: data.count)
-                        if let buff=self.socketClient!.read(Int(len)){
-                            let msgd:NSData=NSData(bytes: buff, length: buff.count)
-                            let msgi:NSDictionary =
-                                (try! NSJSONSerialization.JSONObjectWithData(msgd,
-                                    options: .MutableContainers)) as! NSDictionary
-                            return msgi
-                        }
-                    }
+                if(self.socketClient?.fd<=0){
+                    print("connect lost")
+                    self.statusLabel.text="Lost!"
                 }
                 return nil
             }
@@ -94,8 +125,10 @@ class ViewController: UIViewController {
             //连接服务器
             let (success, msg)=self.socketClient!.connect(timeout: 5)
             if success{
+                
                 dispatch_async(dispatch_get_main_queue(), {
                     print("connect success")
+                    self.statusLabel.text="Connected!"
                 })
                 
                 //发送用户名给服务器（这里使用随机生成的）
@@ -104,13 +137,12 @@ class ViewController: UIViewController {
                 
                 //不断接收服务器发来的消息
                 while true{
-                    if let msg=readmsg(){
+                    print("getmsg")
+                    sleep(100)
+                    if(self.socketClient!.fd<=0){
                         dispatch_async(dispatch_get_main_queue(), {
-                            self.processMessage(msg)
-                        })
-                    }else{
-                        dispatch_async(dispatch_get_main_queue(), {
-                            //self.disconnect()
+                            print("losgconnect!")
+                            self.statusLabel.text="Lost!"
                         })
                         break
                     }
@@ -174,33 +206,25 @@ class ViewController: UIViewController {
             transform=CGPoint(x:transform.x * rate,y: transform.y * rate)
         }
         
-        
         circleButton.center = CGPoint(x: self.view.center.x + transform.x, y: self.view.center.y +  transform.y)
         self.sendSpeedChangeEvent(transform.x/MAX_TRANSFORM_LEN, y: -1 * transform.y/MAX_TRANSFORM_LEN);
         //print("touch moving!",transform)
     }
     
+
+    
     func sendSpeedChangeEvent(x:CGFloat, y:CGFloat) {
-        let newSpeed = CGPoint(x:round(x * speedSteps)/speedSteps,y: round(y*speedSteps)/speedSteps)
-        let newTime = NSDate().timeIntervalSince1970
-        let intervalFromLast = (newTime - lastSentTime)
-        
-        if(newSpeed.x == lastSpeed.x && newSpeed.y == lastSpeed.y && intervalFromLast < msgSentInteval){
-            print("msg sent too fast! since last:", intervalFromLast );
-            return;
-        }
-        lastSentTime = newTime
-        lastSpeed = newSpeed
-        print("msg sent");
+        lastSpeed = CGPoint(x:round(x * speedSteps)/speedSteps,y: round(y*speedSteps)/speedSteps)
         let message=["type": "SPEED_CHANGE",
-                     "body": ["x": round(x * speedSteps)/speedSteps, "y": round(y*speedSteps)/speedSteps]]
+                     "body": ["x": lastSpeed.x, "y":lastSpeed.y]]
+        print("speed:", lastSpeed)
         
         self.sendMessage(message)
     }
     
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        circleButton.center = center;
+        //circleButton.center = center;
         //self.sendSpeedChangeEvent(0.0,y:0.0);
         isTouched = false;
         print("touch end")
