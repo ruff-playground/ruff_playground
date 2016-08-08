@@ -44,10 +44,19 @@ module.exports = driver({
             this._right_front.setDuty(checkDuty(rf) * this._baseRate, callback);
             this._right_back.setDuty(checkDuty(rb) * this._baseRate, callback);
         }
+        this._isStoped = function(){
+            return this._d_lf === 0 && 
+            this._d_lb === 0 && 
+            this._d_rf === 0 && 
+            this._d_rb === 0 ;
+        }
 
     },
     exports: {
         stop: function (callback) {
+            if(this._isStoped()){
+                return;
+            }
             this._setDutiesAndCache(0, 0, 0, 0, callback);
         },
         setBaseRate: function(baseRate){

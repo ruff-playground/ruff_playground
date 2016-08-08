@@ -1,0 +1,330 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B485C9B1D57188300613282 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485C9A1D57188300613282 /* AppDelegate.swift */; };
+		1B485C9D1D57188300613282 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485C9C1D57188300613282 /* ViewController.swift */; };
+		1B485CA01D57188300613282 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B485C9E1D57188300613282 /* Main.storyboard */; };
+		1B485CA21D57188300613282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B485CA11D57188300613282 /* Assets.xcassets */; };
+		1B485CA51D57188300613282 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B485CA31D57188300613282 /* LaunchScreen.storyboard */; };
+		1B485CB81D57341200613282 /* ysocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485CB31D57341200613282 /* ysocket.swift */; };
+		1B485CB91D57341200613282 /* ytcpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B485CB41D57341200613282 /* ytcpsocket.c */; };
+		1B485CBA1D57341200613282 /* ytcpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485CB51D57341200613282 /* ytcpsocket.swift */; };
+		1B485CBB1D57341200613282 /* yudpsocket.c in Sources */ = {isa = PBXBuildFile; fileRef = 1B485CB61D57341200613282 /* yudpsocket.c */; };
+		1B485CBC1D57341200613282 /* yudpsocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B485CB71D57341200613282 /* yudpsocket.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B485C971D57188300613282 /* RemoteCarJoyStick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteCarJoyStick.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B485C9A1D57188300613282 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1B485C9C1D57188300613282 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1B485C9F1D57188300613282 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B485CA11D57188300613282 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B485CA41D57188300613282 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1B485CA61D57188300613282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B485CB31D57341200613282 /* ysocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ysocket.swift; sourceTree = "<group>"; };
+		1B485CB41D57341200613282 /* ytcpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ytcpsocket.c; sourceTree = "<group>"; };
+		1B485CB51D57341200613282 /* ytcpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ytcpsocket.swift; sourceTree = "<group>"; };
+		1B485CB61D57341200613282 /* yudpsocket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = yudpsocket.c; sourceTree = "<group>"; };
+		1B485CB71D57341200613282 /* yudpsocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = yudpsocket.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B485C941D57188300613282 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B485C8E1D57188300613282 = {
+			isa = PBXGroup;
+			children = (
+				1B485C991D57188300613282 /* RemoteCarJoyStick */,
+				1B485C981D57188300613282 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1B485C981D57188300613282 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B485C971D57188300613282 /* RemoteCarJoyStick.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B485C991D57188300613282 /* RemoteCarJoyStick */ = {
+			isa = PBXGroup;
+			children = (
+				1B485CB21D57341200613282 /* ysocket */,
+				1B485C9A1D57188300613282 /* AppDelegate.swift */,
+				1B485C9C1D57188300613282 /* ViewController.swift */,
+				1B485C9E1D57188300613282 /* Main.storyboard */,
+				1B485CA11D57188300613282 /* Assets.xcassets */,
+				1B485CA31D57188300613282 /* LaunchScreen.storyboard */,
+				1B485CA61D57188300613282 /* Info.plist */,
+			);
+			path = RemoteCarJoyStick;
+			sourceTree = "<group>";
+		};
+		1B485CB21D57341200613282 /* ysocket */ = {
+			isa = PBXGroup;
+			children = (
+				1B485CB31D57341200613282 /* ysocket.swift */,
+				1B485CB41D57341200613282 /* ytcpsocket.c */,
+				1B485CB51D57341200613282 /* ytcpsocket.swift */,
+				1B485CB61D57341200613282 /* yudpsocket.c */,
+				1B485CB71D57341200613282 /* yudpsocket.swift */,
+			);
+			path = ysocket;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B485C961D57188300613282 /* RemoteCarJoyStick */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B485CA91D57188300613282 /* Build configuration list for PBXNativeTarget "RemoteCarJoyStick" */;
+			buildPhases = (
+				1B485C931D57188300613282 /* Sources */,
+				1B485C941D57188300613282 /* Frameworks */,
+				1B485C951D57188300613282 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RemoteCarJoyStick;
+			productName = RemoteCarJoyStick;
+			productReference = 1B485C971D57188300613282 /* RemoteCarJoyStick.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B485C8F1D57188300613282 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = YongliuLi;
+				TargetAttributes = {
+					1B485C961D57188300613282 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = YMU4SCCJWL;
+					};
+				};
+			};
+			buildConfigurationList = 1B485C921D57188300613282 /* Build configuration list for PBXProject "RemoteCarJoyStick" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B485C8E1D57188300613282;
+			productRefGroup = 1B485C981D57188300613282 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B485C961D57188300613282 /* RemoteCarJoyStick */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B485C951D57188300613282 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B485CA51D57188300613282 /* LaunchScreen.storyboard in Resources */,
+				1B485CA21D57188300613282 /* Assets.xcassets in Resources */,
+				1B485CA01D57188300613282 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B485C931D57188300613282 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B485CB81D57341200613282 /* ysocket.swift in Sources */,
+				1B485C9D1D57188300613282 /* ViewController.swift in Sources */,
+				1B485CBB1D57341200613282 /* yudpsocket.c in Sources */,
+				1B485CB91D57341200613282 /* ytcpsocket.c in Sources */,
+				1B485C9B1D57188300613282 /* AppDelegate.swift in Sources */,
+				1B485CBA1D57341200613282 /* ytcpsocket.swift in Sources */,
+				1B485CBC1D57341200613282 /* yudpsocket.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1B485C9E1D57188300613282 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B485C9F1D57188300613282 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1B485CA31D57188300613282 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B485CA41D57188300613282 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B485CA71D57188300613282 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1B485CA81D57188300613282 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B485CAA1D57188300613282 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = RemoteCarJoyStick/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.laoniu.RemoteCarJoyStick;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		1B485CAB1D57188300613282 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = RemoteCarJoyStick/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.laoniu.RemoteCarJoyStick;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B485C921D57188300613282 /* Build configuration list for PBXProject "RemoteCarJoyStick" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B485CA71D57188300613282 /* Debug */,
+				1B485CA81D57188300613282 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B485CA91D57188300613282 /* Build configuration list for PBXNativeTarget "RemoteCarJoyStick" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B485CAA1D57188300613282 /* Debug */,
+				1B485CAB1D57188300613282 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B485C8F1D57188300613282 /* Project object */;
+}

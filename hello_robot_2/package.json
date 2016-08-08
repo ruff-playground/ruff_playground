@@ -1,0 +1,14 @@
+{
+    "name": "hello_robot_2",
+    "version": "0.1.0",
+    "description": "",
+    "author": "",
+    "main": "src/index.js",
+    "ruff": {
+        "dependencies": {
+            "driver_car_base002": "*",
+            "lcd1602-pcf8574a-hd44780": "^0.2.2",
+            "button-gpio": "^2.0.2"
+        }
+    }
+}

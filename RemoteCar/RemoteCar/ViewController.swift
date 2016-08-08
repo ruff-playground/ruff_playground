@@ -20,11 +20,8 @@ class ViewController: UIViewController {
     
     let TOUCH_PRESS = 1
     let TOUCH_RELEASE =  0
-
     
-    @IBOutlet weak var titleLabel: UILabel!
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func connectToServer(){
         socketClient=TCPClient(addr: "10.17.6.27", port: 8899)
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
             () -> Void in
@@ -80,6 +77,12 @@ class ViewController: UIViewController {
                 })
             }
         })
+
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
     
@@ -117,7 +120,8 @@ class ViewController: UIViewController {
     }
     
     func sendKeyEvent(keyCode:Int, eventCode:Int) {
-        let message=["type":"KEY_EVENT","keyCode": keyCode, "eventCode": eventCode]
+        let message=["type": "KEY_EVENT",
+                     "body": ["keyCode": keyCode, "eventCode": eventCode]]
         self.sendMessage(message)
     }
     
