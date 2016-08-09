@@ -44,10 +44,12 @@ class ViewController: UIViewController {
         serverPort=Int((portText.text!))!
         NSUserDefaults.standardUserDefaults().setInteger(serverPort, forKey: "serverPort")
         serverAddr=addrText.text!
-        NSUserDefaults.standardUserDefaults().setValue(serverPort, forKey: "serverAddr")
+        NSUserDefaults.standardUserDefaults().setValue(serverAddr, forKey: "serverAddr")
+        self.view.endEditing(true);
         connectToServer();
         
     }
+    //
     func loadDefaultData(){
         let userDefaults =  NSUserDefaults.standardUserDefaults()
         print(userDefaults)
@@ -56,7 +58,7 @@ class ViewController: UIViewController {
             serverAddr = _serverAddr!;
         }
         let _serverPort:Int? = NSUserDefaults.standardUserDefaults().integerForKey("serverPort")
-        if (!(_serverAddr == nil)){
+        if (!(_serverPort == 0)){
             serverPort=_serverPort!;
         }
         addrText.text=serverAddr;
@@ -103,6 +105,8 @@ class ViewController: UIViewController {
             let newCenter = CGPoint(x:(center.x + MAX_TRANSFORM_LEN * newSpeed.x), y:(center.y - MAX_TRANSFORM_LEN * newSpeed.y))
             self.circleButton.center = newCenter;
             self.sendSpeedChangeEvent(newSpeed.x, y: newSpeed.y)
+        }else{
+            self.sendSpeedChangeEvent(lastSpeed.x, y: lastSpeed.y)
         }
     }
     
@@ -242,7 +246,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 
 }
 

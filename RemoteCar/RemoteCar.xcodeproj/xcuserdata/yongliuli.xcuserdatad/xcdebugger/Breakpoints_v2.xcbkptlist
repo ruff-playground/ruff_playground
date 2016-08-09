@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
             endingLineNumber = "119"
-            landmarkName = "sendKeyEvent(_:eventCode:)"
+            landmarkName = "processMessage(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

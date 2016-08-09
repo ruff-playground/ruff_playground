@@ -13,8 +13,9 @@ $.ready(function (error) {
     var noCmdPassedTime = 0;
     var stopDelay = 1000;
     var autoStopTimerInterval = 100;
+    
 
-    var msgProcessorTimerInterval = 50;
+    var msgProcessorTimerInterval = 10;
     //
     var msgProcessor = function() {
     	if(msgs_queue.length === 0) {
@@ -24,32 +25,34 @@ $.ready(function (error) {
 		if(msgStr.length <= 0){
 			return;
 		}
-		console.log(msgStr)
+		//console.log(msgStr)
     	var msg = {};
     	try{
+    		//console.log("start:" + new Date())
     		msg = JSON.parse(msgStr);
+    		//console.log("end:" + new Date())
     	}catch(e){
     		console.log('message is not a valid JSON');
     		return;
     	}
     	switch(msg.type){
     		case "KEY_EVENT":
-    			noCmdInterval = 0;
+    			noCmdPassedTime = 0;
     			onKeyEvent(msg);
     		break;
     		case "SPEED_CHANGE":
-    			noCmdInterval = 0;
+    			noCmdPassedTime = 0;
     			onSpeepChangeEvent(msg);
     		break;
     		case "BASE_RATE_CHANGE":
-    			noCmdInterval = 0;
+    			noCmdPassedTime = 0;
     			onBaseRateChangeEvent(msg);
     		break;
     		default:
     		break;
     	}
     }
-    setInterval(msgProcessor, msgProcessorTimerInterval)
+    setInterval(msgProcessor, 5)
 
 
 	var lastKey = 0;
@@ -71,16 +74,21 @@ $.ready(function (error) {
 
 
     setInterval(autoStop, autoStopTimerInterval)
-
+    var lastLine1 = null
+    var lastLine2 = null
     var lcdShow = function(line1, line2){
-
-		lcd.clear();
-		lcd.setCursor(0, 0);
-		lcd.print(line1);
-		if(line2){
-			lcd.setCursor(0, 1);
-			lcd.print(line2);
-		}
+    	return 
+    	if(lastLine1!==line1||lastLine2!==line2){
+    		lastLine1 = line1;
+    		lastLine2 = line2;
+			lcd.clear();
+			lcd.setCursor(0, 0);
+			lcd.print(line1);
+			if(line2){
+				lcd.setCursor(0, 1);
+				lcd.print(line2);
+			}
+    	}
     }
 
 
@@ -121,7 +129,11 @@ $.ready(function (error) {
 	}
 
 	var onSpeepChangeEvent = function (msg) {
-		lcdShow("Speed: (" + msg.body.x + "," + msg.body.y + ")");
+		if(msg.body.x!==0||msg.body.y!==0){
+			lcdShow("Moving....");
+		}else{
+			lcdShow("Stoped!");
+		}
 		car.setSpeed(msg.body.x, msg.body.y);
 	}
 
@@ -141,9 +153,7 @@ $.ready(function (error) {
 	    	var msgs = trimed.split('\n');
 	    	for(var i = 0 ; i < msgs.length; i++){
 	    		var msgStr = msgs[i];
-	    		msgs_queue.unshift(msgStr)
-
-		    	
+	    		msgs_queue.unshift(msgStr)		    	
 	    	}
 	    	
 
