@@ -21,8 +21,90 @@ class ViewController: UIViewController {
     let TOUCH_PRESS = 1
     let TOUCH_RELEASE =  0
     
+    let repeatKeyInteval = 0.1
+    
+    var serverPort  = 9999
+    var serverAddr = " 10.17.6.27"
+    var speed = 1.0
+    var lastKey = 0
+    
+    @IBOutlet weak var addrText: UITextField!
+    @IBOutlet weak var portText: UITextField!
+    
+    @IBOutlet weak var speedLabel: UILabel!
+    
+    
+    var timer = NSTimer()
+    
+
+    @IBAction func speedUp(sender: AnyObject) {
+        if((0.9 - self.speed) > 0.01){
+            self.speed = self.speed + 0.1;
+        }else{
+            self.speed = 1;
+        }
+        self.saveData();
+        self.sendSpeedChange();
+    }
+    
+    @IBAction func speedDown(sender: AnyObject) {
+        if((self.speed - 0.1) > 0.01){
+            self.speed = self.speed - 0.1;
+        }else{
+            self.speed = 0;
+        }
+        self.saveData();
+        self.sendSpeedChange();
+    }
+    
+    func sendSpeedChange(){
+        //发送用户名给服务器（这里使用随机生成的）
+        let msgtosend=["type":"BASE_RATE_CHANGE","body":["baseRate": self.speed]]
+        self.sendMessage(msgtosend)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.speedLabel.text="\(self.speed)";
+        })
+    }
+    
+    func saveData(){
+        self.serverPort=Int((self.portText.text!))!
+        NSUserDefaults.standardUserDefaults().setInteger(self.serverPort, forKey: "serverPort")
+        
+        NSUserDefaults.standardUserDefaults().setDouble(self.speed, forKey: "speed")
+        //
+        self.serverAddr=self.addrText.text!
+        NSUserDefaults.standardUserDefaults().setValue(self.serverAddr, forKey: "serverAddr")
+        self.view.endEditing(true);
+    }
+    @IBAction func clickReconnect(sender: AnyObject) {
+        self.saveData();
+        self.connectToServer();
+        
+    }
+    //
+    func loadDefaultData(){
+        let userDefaults =  NSUserDefaults.standardUserDefaults()
+        print(userDefaults)
+        let _serverAddr:String? = NSUserDefaults.standardUserDefaults().stringForKey("serverAddr")
+        if (!(_serverAddr == nil)){
+            self.serverAddr = _serverAddr!;
+        }
+        let _serverPort:Int? = NSUserDefaults.standardUserDefaults().integerForKey("serverPort")
+        if (!(_serverPort == 0)){
+            self.serverPort=_serverPort!;
+        }
+        let _speed:Double? = NSUserDefaults.standardUserDefaults().doubleForKey("speed")
+        if (!(_speed == 0)){
+            self.speed=_speed!;
+        }
+        self.addrText.text=self.serverAddr;
+        self.speedLabel.text="\(self.speed)";
+        self.portText.text="\(self.serverPort)";
+    }
+    
+    
     func connectToServer(){
-        socketClient=TCPClient(addr: "10.17.6.27", port: 8899)
+        self.socketClient=TCPClient(addr: self.serverAddr, port: self.serverPort)
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
             () -> Void in
             
@@ -55,8 +137,7 @@ class ViewController: UIViewController {
                 })
                 
                 //发送用户名给服务器（这里使用随机生成的）
-                let msgtosend=["cmd":"nickname","nickname":"游客\(Int(arc4random()%1000))"]
-                self.sendMessage(msgtosend)
+                self.sendSpeedChange();
                 
                 //不断接收服务器发来的消息
                 while true{
@@ -83,6 +164,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadDefaultData();
+        self.connectToServer();
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(repeatKeyInteval, target: self, selector: (#selector(ViewController.repeatKey)), userInfo:nil,repeats: true)
+        
+    }
+    
+    func repeatKey(){
+        if(lastKey>0){
+            self.sendKeyEvent(lastKey,eventCode: TOUCH_PRESS)
+        }
     }
     
     
@@ -127,35 +219,41 @@ class ViewController: UIViewController {
     
     
     @IBAction func moveFront(sender: AnyObject) {
-        titleLabel.text="MovingFront";
+        self.titleLabel.text="MovingFront";
+        lastKey=KEY_UP
         self.sendKeyEvent(KEY_UP,eventCode: TOUCH_PRESS)
     }
     
     
     @IBAction func moveBack(sender: AnyObject) {
         titleLabel.text="MovingBack";
+        lastKey=KEY_DOWN
         self.sendKeyEvent(KEY_DOWN,eventCode: TOUCH_PRESS)
     }
     
     
     @IBAction func turnLeft(sender: AnyObject) {
-        titleLabel.text="turnLeft";
+        self.titleLabel.text="turnLeft";
+        lastKey=KEY_LEFT
         self.sendKeyEvent(KEY_LEFT,eventCode: TOUCH_PRESS)
     }
     
     @IBAction func turnRight(sender: AnyObject) {
-        titleLabel.text="turnRight";
+        self.titleLabel.text="turnRight";
+        lastKey=KEY_RIGHT
         self.sendKeyEvent(KEY_RIGHT,eventCode: TOUCH_PRESS)
     }
     
     @IBAction func touchUp(sender: AnyObject) {
-        titleLabel.text="WaitingAction";
+        self.titleLabel.text="WaitingAction";
+        lastKey=0
         self.sendKeyEvent(KEY_ENTER,eventCode: TOUCH_RELEASE)
     }
     
     
     @IBAction func stop(sender: AnyObject) {
-        titleLabel.text="Stoping";
+        self.titleLabel.text="Stoping";
+        lastKey = 0
         self.sendKeyEvent(KEY_ENTER,eventCode: TOUCH_PRESS)
     }
     
