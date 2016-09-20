@@ -2,6 +2,7 @@
 var net = require('net');
 
 $.ready(function (error) {
+	var server_host = 'iot.thoughtworks.me'
 	var lcd = $("#LCD1602-02");
 	var car = $("#car_base");
 	var button = $("#CK002");
@@ -76,6 +77,19 @@ $.ready(function (error) {
     setInterval(autoStop, autoStopTimerInterval)
     var lastLine1 = null
     var lastLine2 = null
+
+    var ledLight= function(onOff){
+    	// comment 'return' for demo!
+    	return 
+
+    	if(onOff){
+    		$('#led-r').turnOn();
+    	}else{
+    		$('#led-r').turnOff();
+    	}
+    	
+    }
+
     var lcdShow = function(line1, line2){
     	return 
     	if(lastLine1!==line1||lastLine2!==line2){
@@ -90,6 +104,8 @@ $.ready(function (error) {
 			}
     	}
     }
+
+
 
 
 
@@ -130,9 +146,11 @@ $.ready(function (error) {
 
 	var onSpeepChangeEvent = function (msg) {
 		if(msg.body.x!==0||msg.body.y!==0){
+			ledLight(true);
 			lcdShow("Moving....");
 		}else{
 			lcdShow("Stoped!");
+			ledLight(false);
 		}
 		car.setSpeed(msg.body.x, msg.body.y);
 	}
@@ -143,7 +161,7 @@ $.ready(function (error) {
 
 
 	var connect = function(){
-		var client = net.connect({port:port,host:'10.17.6.27'},function(){
+		var client = net.connect({port:port,host: server_host},function(){
 			console.log('connect to server!');
 			client.write('Hello world! from board!\r\n');
 	    });
